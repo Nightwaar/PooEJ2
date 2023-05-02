@@ -3,22 +3,26 @@ class Viajero:
     __DNI= ''
     __nombre = ''
     __apellido= ''
-    __millasacumuladas=''
-    def __init__(self,NumeroViajero='',DNI='',nombre='',apellido='',millasacumuladas=''):
+    __millasacumuladas=0
+    def __init__(self,NumeroViajero='',DNI='',nombre='',apellido='',millasacumuladas=0):
         self.__NumeroViajero = NumeroViajero
         self.__DNI = DNI
         self.__nombre = nombre 
         self.__apellido = apellido 
-        self.__millasacumuladas = millasacumuladas 
-    def cantidadTotaldeMillas(self):
-        return 'La cantidad total de millas es: {}'.format(self.__millascumuladas)
-    def acumularmillas(self,millas):
+        self.__millasacumuladas = int(millasacumuladas) 
+    def accion1(self):
+        return self.__millasacumuladas
+    def accion2(self,millas=0):
         self.__millasacumuladas = self.__millasacumuladas + millas
-    def canjearmillas(self,millascanjear):
+        print('La cantidad es {}'.format(self.__millasacumuladas))
+        return 
+    def accion3(self,millascanjear):
         if millascanjear <= self.__millasacumuladas:
+            self.__millasacumuladas = self.__millasacumuladas - millascanjear
             print('Millas canjeadas')
         else: 
-            return 'Error'
+            print('No se puede canjear')
+        return
     def mostrar(self):
             print('El numero de viajero es:{}'.format(self.__NumeroViajero))
             print('El DNI es:{}'.format(self.__DNI))
@@ -28,19 +32,9 @@ class Viajero:
     def verifnum(self,numero):
         if self.__NumeroViajero == numero:
             return True
-    def ingreso(lista,numviajero):
+    def ingreso(lista):
+        numviajero = input("Ingrese un numero de viajero:")
         for i in range(len(lista)):
             if lista[i].verifnum(numviajero) == True:
                 print(lista[i])
-    def op1(self):
-        print('La cantidad de millas es: {}'.format(self.__millasacumuladas))
-    def op2(self):
-        millas = input('Ingrese la cantidad de millas a acumular')
-        self.__millasacumuladas = self.__millasacumuladas + millas
-    def op3(self):
-        millas = input('Ingrese la cantidad de millas a canjear')
-        if self.__millasacumuladas >= millas:
-            self.__millasacumuladas = self.__millasacumuladas - millas
-        else:
-            print('Error')
-        return
+                return i
